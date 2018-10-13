@@ -1,12 +1,42 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Keybord Tones</title>
-	<link rel="stylesheet" href="">
+<!-- Load the Paper.js library -->
+<script type="text/javascript" src="js/lib/paper-full.min.js"></script>
+<link rel="stylesheet" type="text/css" href="css/styles.css">
+<!-- Define inlined PaperScript associate it with myCanvas -->
+<script type="text/paperscript" canvas="myCanvas">
+	//dimensions of grid (e.g. a 5x10 grid)
+    var rows = 10;
+    var cols = 200;
+
+    //center coordinates of any circle being drawn
+    var x;
+    var y;
+
+    //center coordinates of first circle being drawn
+    var xstart = 50;
+    var ystart = 50;
+
+    // distance between center coordinates
+    var xspacing = 100;
+    var yspacing = 100;
+
+    var radius = 10;
+    var fillColor = 'red';
+
+    // create grid and draw circles
+    for(var row = 1; row <= rows; row++) {
+        y = ystart + (row - 1) * yspacing;
+
+        for(var col = 1; col <= cols; col++) {
+            x = xstart + (col - 1) * xspacing;
+            new Path.Circle(new Point(x, y), radius).fillColor = fillColor;
+        }
+    }
+</script>
 </head>
 <body>
-	
+	<canvas id="myCanvas" resize></canvas>
 </body>
 </html>
